@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Background Color and Sum Calculation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+        }
+        input[type="text"] {
+            margin: 10px 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="inputA" placeholder="Enter value for A"><br>
+        <input type="text" id="inputB" placeholder="Enter value for B"><br>
+        <input type="text" id="result" placeholder="Result" readonly>
+    </div>
+    <style>
+        .container{
+               text-align: center;
+               padding-top: 150px;
+        }
+    </style>
+    <script>
+        
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+
+        function changeBackgroundColor() {
+            document.body.style.backgroundColor = getRandomColor();
+        }
+
+        
+        setInterval(changeBackgroundColor, 1000);
+
+       
+        function calculateSum() {
+            const inputA = parseFloat(document.getElementById('inputA').value) || 0;
+            const inputB = parseFloat(document.getElementById('inputB').value) || 0;
+            const result = inputA + inputB;
+            document.getElementById('result').value = result;
+        }
+
+    
+        document.getElementById('inputA').addEventListener('input', calculateSum);
+        document.getElementById('inputB').addEventListener('input', calculateSum);
+    </script>
+</body>
+</html>
